@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-// Gerando um hash antes de salvar o usuário
+// Gerando um hash para senha antes de salvar o usuário
 UserSchema.pre('save', async function(next) {
     const hash = await bcrypt.hash(this.password, 10)
     this.password = hash
